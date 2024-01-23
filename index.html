@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <h1>Grocery List</h1>
+
+    <list class="list" :category="item.category" v-for="(item,index) in items" :name="item.name" :key="index"
+      :item="item" :done="item.done" v-if="item.done === false">
+
+    </list>
+
+    <div class=" item" v-on:submit="addItem">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Add Item</h5>
+          <input type="text" id="text" v-model="name" @keyup.enter="addItem">
+          <select class="custom-select" id="inputGroupSelect01" v-model="category">
+            <option selected v-for="category in categories" :value="category">
+              {{category}}
+            </option>
+          </select>
+          <button @click="addItem" type="submit" class="btn btn-primary">Add Item</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
